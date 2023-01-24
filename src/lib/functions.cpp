@@ -106,15 +106,19 @@ void getInput(int input[]){
     if (inputType == 1){ // Manual
         // setup
         string inputLines, arg;
+        bool firstTry = true;
         bool validInput = false;
 
         // Validasi input
         do {
-            cout<< "Masukkan 4 Kartu {A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K} dengan dipisahkan oleh satu spasi:"<< endl;
-            cin.ignore(); // Agar mencegah bug pada getline
+            cout<< "Masukkan 4 Kartu {A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K} dengan dipisahkan oleh satu spasi:"<<endl;
+            if (firstTry){
+                cin.ignore(); // Agar mencegah bug pada getline
+            }
             getline(cin,inputLines);
             if(!isValidInput(inputLines)){
                 cout<<"Masukan Tidak Sesuai"<< endl;
+                firstTry = false;
             } else {
                 validInput = true;
             }
